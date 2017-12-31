@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./cssreset.css">
+  <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+  <div id="main">
+    <div class="addup">
+      <div>
+        班次：
+        <input type="text" placeholder="增加班次" v-model="addwork" class="input-control">
+        <div @click="addduty">新增</div>
+      </div>
+    </div>
+    <div class="calendar">
+      <ul class="week">
+        <li v-for="day in days" class="day">
+          {{day.name}}
+        </li>
+      </ul>
+
+      <div class="elist">
+        <selected class="deploy" :day="0" :cid="cid" :rid="rid" :inneremp="employee" :worklist="worklist"></selected>
+        <selected class="deploy" :day="1" :cid="cid" :rid="rid" :inneremp="employee" :worklist="worklist"></selected>
+        <selected class="deploy" :day="2" :cid="cid" :rid="rid" :inneremp="employee" :worklist="worklist"></selected>
+        <selected class="deploy" :day="3" :cid="cid" :rid="rid" :inneremp="employee" :worklist="worklist"></selected>
+        <selected class="deploy" :day="4" :cid="cid" :rid="rid" :inneremp="employee" :worklist="worklist"></selected>
+        <selected class="deploy" :day="5" :cid="cid" :rid="rid" :inneremp="employee" :worklist="worklist"></selected>
+        <selected class="deploy" :day="6" :cid="cid" :rid="rid" :inneremp="employee" :worklist="worklist"></selected>
+      </div>
+    </div>
+
+    <div class="addup">
+      <form>
+        <div>
+          姓名：
+          <input type="text" placeholder="增加员工" v-model="addperson.name" class="input-control">
+          <div @click="add">新增</div>
+        </div>
+      </form>
+    </div>
+
+    <div class="detail">
+      <!-- 调休请求 -->
+      <div class="data data-header">
+        <div class="person">调休</div>
+        <div class="require-list">
+          <div class="require">周日</div>
+          <div class="require">周一</div>
+          <div class="require">周二</div>
+          <div class="require">周三</div>
+          <div class="require">周四</div>
+          <div class="require">周五</div>
+          <div class="require">周六</div>
+        </div>
+      </div>
+      <ul>
+        <li v-for="person in employee" @click="togrequire" class="data">
+          <div class="person">
+            {{person.name}}
+          </div>
+          <div class="require-list">
+            <div v-for="(require,index) in person.require" class="require">
+              <div :data-status="index" :data-id="person.id">
+                {{require?"★":"☆"}}
+
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="data data-header">
+        <div class="person">班次</div>
+        <div class="require-list">
+          <div v-for="work in worklist" class="require">{{work.name}}</div>
+        </div>
+      </div>
+      <ul>
+        <li v-for="person in employee" @click="togduty" class="data">
+          <div class="person">
+            {{person.name}}
+          </div>
+          <div class="require-list">
+            <div v-for="(duty,index) in person.duty" class="require">
+              <div :data-status="index" :data-id="person.id">
+                {{duty?"★":"☆"}}
+
+              </div>
+            </div>
+          </div>
+
+        </li>
+      </ul>
+    </div>
+
+    <div class="clear">
+      <div @click="clearlist" class="clearbtn">清空班次</div>
+      <div @click="clearemp" class="clearbtn">清空人员</div>
+    </div>
+
+  </div>
+
+  <!-- 模板 -->
+  <template id="temp-select">
+    <div>
+
+      <ul class="finish">
+        <li v-for="(worker, index) in work">
+          <div class="classes">
+            {{index?dutylist[index]:dutylist[0]}}：
+          </div>
+          <ul @click="remove">
+            <li v-for="item in worker" :data-id="item.id" class="pill pointer">{{item.name}}</li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="select">
+        <li v-for="(select, index) in selected" class="pill">
+          {{select.name}}
+          <ul>
+            <li v-for="(duty, i) in select.duty">
+              <span @click.prevent="moveto" v-if="duty" :data-index="i" :data-id="select.id" class="subclass pointer">可值:{{dutylist[i]}}</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+
+  </template>
+
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script src="./data.js"></script>
+</body>
+
+</html>

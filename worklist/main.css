@@ -1,0 +1,144 @@
+div {
+    /* background: rgba(0, 0, 0, .1); */
+}
+
+#main {
+    font-size: 16px;
+    font-family: Microsoft YaHei;
+}
+
+
+/* 日历 */
+
+.calendar {
+    margin: 10px;
+}
+
+.week {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.day {
+    flex-basis: 100px;
+    flex-grow: 1;
+    background: #8b6969;
+    color: #fffafa;
+}
+
+
+/* 详情 */
+
+.addup {
+    margin: 10px auto;
+    padding: 10px 0;
+    line-height: 40px;
+    text-align: center;
+}
+
+.input-control {
+    height: 24px;
+    font-size: 12px;
+}
+
+.detail {
+    margin: 10px;
+}
+
+.require-list {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.require {
+    flex-basis: 50px;
+    flex-grow: 1;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.data {
+    display: flex;
+    flex-direction: row;
+}
+
+.data-header {
+    background: #8b6969;
+    color: #fffafa;
+}
+
+.person {
+    flex-basis: 100px;
+    flex-grow: 0;
+    padding: 2px;
+}
+
+
+/* 清空 */
+
+.clear {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.clearbtn {
+    cursor: pointer;
+    background: #8b6969;
+    color: #fac4c4;
+    flex-basis: 100px;
+    border-radius: 6px;
+    margin: 5px;
+    padding: 5px;
+}
+
+
+/* 模板 */
+
+.deploy {
+    flex-basis: 100px;
+    flex-grow: 1;
+    background: #fffafa;
+}
+
+.finish {
+    min-height: 100px;
+}
+
+.classes {
+    margin: 5px;
+    padding: 0 5px;
+    color: #8b6969;
+    font-size: 14px;
+    font-weight: bold;
+    border-left: 2px solid #fac4c4;
+}
+
+.select {
+    min-height: 100px;
+}
+
+.subclass {
+    padding: 0 5px;
+    border-left: 2px solid #fffafa;
+    font-size: 12px;
+}
+
+.elist {
+    display: flex;
+    flex-direction: row;
+}
+
+.pointer:hover {
+    cursor: pointer;
+}
+
+.pill {
+    margin: 5px;
+    padding: 5px;
+    background: #fac4c4;
+    border-radius: 6px;
+    color: #fff;
+}
